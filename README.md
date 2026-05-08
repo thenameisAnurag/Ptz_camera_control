@@ -17,6 +17,7 @@
 ---
 
 ## ✨ What is this?
+<img width="300" height="168" alt="image" src="https://github.com/user-attachments/assets/84c0b0e9-8b4a-477d-ab2b-e6a9aa9d6fa4" />
 
 Four progressive scripts that turn an off-the-shelf ONVIF PTZ camera into an **intelligent visual tracker**:
 
@@ -146,6 +147,11 @@ Headless / inference-only? Strip the X11 mounts and run script `01` or pipe fram
 
 ---
 
+
+check the tracking 
+
+https://github.com/user-attachments/assets/c4e377c2-34b7-4cf4-a8e5-906f70523e19
+
 ## ⚙️ Configuration
 
 All knobs live in `.env` (see [`.env.example`](.env.example)):
@@ -182,17 +188,6 @@ All knobs live in `.env` (see [`.env.example`](.env.example)):
 - **ONVIF-compliant** PTZ camera (Profile S / T) reachable over HTTPS
 - **FFmpeg** (bundled in the Docker image; install via `apt`/`brew` locally)
 
----
-
-## 🗺️ Roadmap
-
-- [ ] Multi-object tracking with stable IDs (ByteTrack / BoT-SORT)
-- [ ] PID controller for pan/tilt instead of bang-bang
-- [ ] Web UI (replace OpenCV window with a browser stream)
-- [ ] Recording / event clipping when target is detected
-- [ ] Profile-aware presets (`person-mode`, `airplane-mode`, `drone-mode`)
-
----
 
 ## 🤝 Contributing
 
