@@ -1,0 +1,18 @@
+# ── Camera / ONVIF ────────────────────────────
+requests>=2.31.0
+urllib3>=2.0.0
+python-dotenv>=1.0.0
+
+# ── Vision ────────────────────────────────────
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# ── Detection (YOLOv8) ────────────────────────
+# torch is pinned loosely — for CUDA wheels, install from pytorch.org first:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.1.0
+
+# ── Optional: keyboard fallback (for headless mode in 02_keys_camera.py) ──
+keyboard>=0.13.5

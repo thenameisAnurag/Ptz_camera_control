@@ -1,0 +1,47 @@
+# Secrets — NEVER commit
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# YOLO weights & datasets (pull/download instead)
+*.pt
+*.onnx
+*.engine
+*.weights
+runs/
+datasets/
+
+# Media / logs
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+*.log
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png
+!docs/**/*.jpg
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp

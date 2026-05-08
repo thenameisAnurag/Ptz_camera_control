@@ -1,0 +1,14 @@
+.env
+.git
+.gitignore
+__pycache__
+*.pyc
+.venv
+venv
+*.mp4
+*.avi
+*.zip
+*.log
+.vscode
+.idea
+README.md
