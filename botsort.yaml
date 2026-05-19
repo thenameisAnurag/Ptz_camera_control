@@ -1,0 +1,52 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# BoT-SORT configuration — tuned for PTZ single-object tracking
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# This file is loaded by track.py via an EXPLICIT absolute path in
+# TRACKER_YAML. Do not move or rename it without updating track.py.
+
+# ── Core tracker selection ───────────────────────────────────────────────────
+tracker_type: botsort
+
+# ── Confidence thresholds ────────────────────────────────────────────────────
+# These MUST be ≤ your YOLO_CONF in track.py. Lowered to 0.10 to catch
+# the weak detections seen in field testing on transparent bottles against
+# busy backgrounds. At airport (clean sky), confidence will be much higher
+# and these thresholds will be effectively unused.
+
+track_high_thresh: 0.10
+  # First-pass association threshold. Anything above goes into the priority
+  # matching round. Matched to YOLO_CONF=0.10 in track.py.
+
+track_low_thresh: 0.01
+  # Second-pass threshold for keeping existing tracks alive through brief
+  # confidence dips. Very permissive: any blip above 1% confidence keeps
+  # the track from being killed.
+
+new_track_thresh: 0.5
+appearance_thresh: 0.8     # was 0.25 — looser Re-ID matching
+  # Bar for promoting a tentative track (id=None) to a confirmed one.
+  # Lowered from 0.25 to 0.20 because new_track_thresh > YOLO_CONF means
+  # we'd never confirm a 0.10-0.20 detection as a track. Now we will.
+
+# ── Track persistence ────────────────────────────────────────────────────────
+track_buffer: 150
+  # Frames to keep a "dead" track alive (Kalman prediction). 3 seconds at
+  # 30 fps. Works together with spatial adoption in tracker_state.py:
+  # longer buffer = more chances for exact-ID survival; adoption is the
+  # fallback when buffer still isn't enough.
+
+# ── Matching strictness ──────────────────────────────────────────────────────
+match_thresh: 0.65
+  # IoU threshold for matching detection→track. 0.65 tolerates fast PTZ
+  # motion (camera-induced apparent jumps) without false-merging.
+
+fuse_score: true
+
+# ── Camera motion compensation (the reason we chose BoT-SORT) ────────────────
+gmc_method: sparseOptFlow
+
+# ── ReID (off — not needed for single-object PTZ) ────────────────────────────
+proximity_thresh: 0.5
+with_reid: true 
+model: auto
